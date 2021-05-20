@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-381hdb_#6z(*u6waeul@z@r813f-0@0ewnry=rh+9y^gctidy-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 mimetypes.add_type("text/css",".css",True)
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
