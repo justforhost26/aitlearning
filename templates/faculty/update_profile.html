@@ -1,0 +1,86 @@
+
+
+{% extends 'faculty/faculty_base.html' %}
+{% load static %}
+{% block title %}
+    AIT Learning | Faculty | Update Profile
+{% endblock %}
+{% block content %}
+      <!-- /HOME -->
+    <section class="main-home" id="home">
+      <div class="home-page-photo"></div> <!-- Background image -->
+      <div class="home__header-content">
+        <div id="main-home-carousel" class="owl-carousel">
+
+
+          <div>
+
+            <h1 class="intro-title">Update Profile</h1>
+            <p class="intro-text">I think You are here to Update Your Profile,Update Now</p>
+
+          </div><!--slide item like paragraph-->
+
+
+        </div>
+      </div>
+    </section>
+    <!-- /End HOME -->
+    <!--profile Section -->
+<br>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"  >
+            <div class="card user-card">
+                <div class="card-header">
+            <h3 style="margin-left:25%">   Update Profile</h3>
+                </div>
+                <div class="card-block" >
+<form action="{% url 'update_profile' id=data.id %}" method="post">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name</label>
+    <input type="text" name="name" value="{{ data.name }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" required>
+  </div>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Number</label>
+    <input type="text" name="mobile_number" value="{{ data.mobile_number }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Number" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input type="email" name="email" value="{{ data.email }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email" required>
+  </div>
+   <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Department</label>
+    <select name="department" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <option value="{{ data.department }}" disabled selected>{{ data.department }}</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Pharmacy">Pharmacy</option>
+        <option value="Diploma">Diploma</option>
+        <option value="ITI">ITI</option>
+    </select>
+   </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Branch</label>
+    <input type="text" name="branch" value="{{ data.branch }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Department" required>
+  </div>
+<br>
+    <button type="submit" class="btn btn-primary">Update </button>
+    <br><br>
+        <a href="{% url 'update_password' id=data.id %}" class="btn btn-danger">Change Password <i class="fa fa-edit" style="margin-left:7px;"></i></a>
+<br><br>
+        <a href="{% url 'update_profile_pic' id=data.id %}" class="btn btn-warning">Change Profile Pic <i class="fa fa-edit" style="margin-left:7px;"></i></a>
+
+</form>
+
+                </div>
+            </div>
+        </div>
+
+	</div>
+</div>
+    <br>
+    <!--end profile-->
+{% endblock %}

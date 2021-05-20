@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}
+    AIT Learning | Faculty_Register
+{% endblock %}
+{% block content %}
+         <!-- /HOME -->
+    <section class="main-home" id="home">
+<div class="home-page-photo"></div>
+      <div class="home__header-content">
+
+        <div id="main-home-carousel" class="owl-carousel">
+            <div class="container">
+           <center><br><br>
+            <form style="text-align:left;width:80%;height:480px;border:1px;border-style: outset;padding: 5px;color: black;background-color: white;border-radius: 10px; "  method="post" action="{% url 'do_faculty_register' %}">
+{% csrf_token %}
+{% include 'messages.html' %}
+                <h2 style="text-align: center">Sign Up</h2>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+   </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address </label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+   </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Mobile Number</label>
+    <input type="text" name="mobile_number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+   </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Department</label>
+    <select name="department" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <option class="disabled" disabled selected>Select Department</option>
+<option value="Engineering">Engineering</option>
+        <option value="Pharmacy">Pharmacy</option>
+        <option value="Diploma">Diploma</option>
+        <option value="ITI">ITI</option>
+       </select>
+   </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Branch</label>
+    <input type="text" name="branch" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+   </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+  </div>
+<br>
+ <center> <button type="submit" class="btn btn-primary">Submit</button>
+<br>             <p style="color:black;font-family:bold;margin-top: 5px;"> If you are Already Register, <a style="color:blue"  href="{% url 'faculty_login' %}">Login</a>
+              </p>
+ </center>
+            </form>
+           </center>
+
+    </div>
+        </div>
+      </div>
+    </section>
+    <!-- /End HOME -->
+
+{% endblock %}

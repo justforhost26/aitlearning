@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block title %}
+    AIT Learning | Faculty
+{% endblock %}
+
+{% block content %}
+     <!-- /HOME -->
+    <section class="main-home" id="home">
+      <div class="home-page-photo"></div> <!-- Background image -->
+      <div class="home__header-content">
+        <div id="main-home-carousel" class="owl-carousel">
+          <div>
+            <h1 class="intro-title">Our Faculty's</h1>
+            <p class="intro-text">We Provide Best Faculty's to Our Student<br/>  To Know More About Faculty's Visit <a href="http://ait1.herokuapp.com/Faculty_page">Management/Faculty</a></p>
+            <a class="btn btn-custom" href="{% url 'faculty_login' %}">Login</a>
+          <br><br>    <a class="btn btn-custom" href="{% url 'faculty_register' %}">Register</a>
+          </div><!--slide item like paragraph-->
+
+          <div>
+            <h1 class="intro-title">Our Faculty's</h1>
+            <p class="intro-text">We Provide Best Faculty's to Our Student<br/>  To Know More About Faculty's Visit <a href="http://ait1.herokuapp.com/Faculty_page">Management/Faculty</a></p>
+            <a class="btn btn-custom" href="{% url 'faculty_login' %}">Login</a>
+          <br><br>    <a class="btn btn-custom" href="{% url 'faculty_register' %}">Register</a>
+          </div><!--slide item like paragraph-->
+
+          <div>
+            <h1 class="intro-title">Our Faculty's</h1>
+            <p class="intro-text">We Provide Best Faculty's to Our Student<br/>  To Know More About Faculty's Visit <a href="http://ait1.herokuapp.com/Faculty_page">Management/Faculty</a></p>
+            <a class="btn btn-custom" href="{% url 'faculty_login' %}">Login</a>
+          <br><br>    <a class="btn btn-custom" href="{% url 'faculty_register' %}">Register</a>
+          </div><!--slide item like paragraph-->
+        </div>
+      </div>
+    </section>
+    <!-- /End HOME -->
+
+    <!--faculty-->
+<center>
+<h2>Our Faculty's</h2>
+    </center>
+        <div class="container">
+    <div class="row">
+<br>
+{% for data in datas %}
+
+        <div class="col-lg-4 container" style="border-style:ridge;">
+ <div class="card-header" >
+
+                </div>
+            <div class="card user-card" >
+               <br><br><br>
+                <div class="card-block" style="padding-right: 2%">
+                    <div class="user-image">
+<center>
+  <image src="{{ data.pic.url }}"  style="width:220px;height: 220px;border-radius: 120px;">
+</center>
+
+
+                    </div>
+<hr>                <div class="row">
+                    <div class="col-md-6 text-muted "><h4> Faculty Name </h4> </div>
+                    <div class="col-md-6 text-muted " ><h4>{{ data.name }}</h4> </div>
+                    </div>
+
+                    <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Department</h4>  </div>
+                    <div class="col-md-6 text-muted "><h4>{{ data.department }}</h4> </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Branch</h4>  </div>
+                    <div class="col-md-6 text-muted "><h4>{{ data.branch }}</h4> </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Email(for contact)</h4>  </div>
+                    <div class="col-md-6  "> <h4><a target="_blank" href="mailto:{{ data.email }}" class="btn btn-info text-dark">Email <i
+                      class="far fa-envelope"></i> </a></h4>
+ </div>
+                    </div>
+
+                    <hr>
+
+
+                </div>
+
+            </div>
+
+        </div>
+{% endfor %}
+
+	</div>
+
+</div>
+    <center>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+   {% if datas.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page={{ datas.previous_page_number }}">Previous</a></li>
+   {% endif %}
+    <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+    <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+    <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+
+  {% if datas.number > 3 %}
+        <li class="page-item"><a class="page-link" href="?page=3">{{ datas.number }}</a></li>
+    {% endif %}
+   {% if datas.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ datas.next_page_number }}">Next</a></li>
+  {% endif %}
+
+  </ul>
+</nav>
+    </center>
+    <!--end faculty-->
+
+
+{% endblock %}

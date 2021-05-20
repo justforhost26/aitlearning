@@ -1,0 +1,59 @@
+
+
+{% extends 'faculty/faculty_base.html' %}
+{% load static %}
+{% block title %}
+    AIT Learning | Faculty | Update Profile Photo
+{% endblock %}
+{% block content %}
+      <!-- /HOME -->
+    <section class="main-home" id="home">
+      <div class="home-page-photo"></div> <!-- Background image -->
+      <div class="home__header-content">
+        <div id="main-home-carousel" class="owl-carousel">
+
+
+          <div>
+
+            <h1 class="intro-title">Update Profile Image</h1>
+            <p class="intro-text">I think You are here to Update Your Profile,Update Now</p>
+
+          </div><!--slide item like paragraph-->
+
+
+        </div>
+      </div>
+    </section>
+    <!-- /End HOME -->
+    <!--profile Section -->
+<br>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"  >
+            <div class="card user-card">
+                <div class="card-header">
+            <h3 style="margin-left:25%">   Update Profile Image</h3>
+                </div>
+                <div class="card-block" >
+<form action="{% url 'do_update_profile_pic' id=data.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Photo</label>
+    <input type="file" name="pic"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Choose Image" required>
+  </div>
+<br>
+    <button type="submit" class="btn btn-primary">Update </button>
+
+</form>
+
+                </div>
+            </div>
+        </div>
+
+	</div>
+</div>
+    <br>
+    <!--end profile-->
+{% endblock %}

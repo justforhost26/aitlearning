@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+    AIT Learning | Faculty_Login
+{% endblock %}
+{% block content %}
+         <!-- /HOME -->
+    <section class="main-home" id="home">
+<div class="home-page-photo"></div>
+      <div class="home__header-content">
+{% include 'messages.html' %}
+        <div id="main-home-carousel" class="owl-carousel">
+<div class="container-fluid ">
+           <center>
+            <form style="text-align:left;width:60%; " class="shadow-box" method="post" action="{% url 'do_faculty_login' %}">
+{% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" name="email" placeholder="Enter Registered Email ID" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+   </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" placeholder="Enter Password" id="exampleInputPassword1">
+  </div>
+<br>
+  <button type="submit" class="btn btn-primary">Submit</button><br>
+             <p style="color:white;font-family:bold;float:left"> If you are not Register, <a style="color:blue"  href="{% url 'faculty_register' %}">Click Here</a>
+              </p>
+
+            </form></center>
+    </div>
+        </div>
+      </div>
+    </section>
+    <!-- /End HOME -->
+
+{% endblock %}

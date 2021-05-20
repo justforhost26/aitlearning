@@ -1,0 +1,354 @@
+{% extends 'base.html' %}
+{% block title %}
+    AIT Learning | Home
+{% endblock %}
+{% block content %}
+
+
+
+  <!-- Preloader -->
+  <div class="animationload">
+    <div class="loader">
+        Please Wait....
+    </div>
+  </div>
+  <!-- End Preloader -->
+
+
+
+    <!-- /HOME -->
+    <section class="main-home" id="home">
+      <div class="home-page-photo"></div> <!-- Background image -->
+      <div class="home__header-content">
+        <div id="main-home-carousel" class="owl-carousel">
+          <div>
+            <h1 class="intro-title">Start Learning Now</h1>
+            <p class="intro-text">This ISte is for learning propose and we have another one<br/> For student management.</p>
+            <a class="btn btn-custom" href="http://ait1.herokuapp.com">AIT Management</a>
+          </div><!--slide item like paragraph-->
+
+          <div>
+            <h1 class="intro-title">Start Learning Now</h1>
+            <p class="intro-text">This ISte is for learning propose and we have another one<br/> For student management.</p>
+            <a class="btn btn-custom" href="http://ait1.herokuapp.com">AIT Management</a>
+          </div><!--slide item like paragraph-->
+
+          <div>
+            <h1 class="intro-title">Start Learning Now</h1>
+            <p class="intro-text">This ISte is for learning propose and we have another one<br/> For student management.</p>
+            <a class="btn btn-custom" href="http://ait1.herokuapp.com">AIT Management</a>
+          </div><!--slide item like paragraph-->
+        </div>
+      </div>
+    </section>
+    <!-- /End HOME -->
+
+        <center>
+<br><br>
+<form action="{% url 'search_main' %}" method="post">
+{% csrf_token %}
+<input type="search" class="search_form" name="search" placeholder="Enter Topic,subject etc" style="width: 200px;height: 40px;border-color:springgreen;border-style: ridge; outline-color: #1aace7;font-size: 15px;padding: 5px;" >
+<input type="submit" class="btn btn-custom" value="Search" style="max-width:120px;height: 40px;margin-top: -4px;margin-left: -5px; ">
+</form>
+        </center>
+{% if search is not None %}
+    <div class="container">
+    <div class="row">
+<br>
+{% for data in search %}
+
+        <div class="col-lg-4 container" style="border-style:ridge;padding-top: 4%;">
+ <div class="card-header" style="margin-top:-10px ">
+
+                </div>
+            <div class="card user-card" >
+               <br><br><br>
+                <div class="card-block" style="padding-right: 2%">
+                    <div class="user-image">
+<video  controls  style="width:220px;height: 200px;border-radius: 20px;margin-left:8%">
+  <source src="{{ data.video.url }}" >
+
+</video>
+
+
+                    </div>
+<hr>                <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Topic </h4> </div>
+                    <div class="col-md-6 text-muted " ><h4>{{ data.topic_name }}</h4> </div>
+                    </div>
+
+                    <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Subject</h4>  </div>
+                    <div class="col-md-6 text-muted "><h4>{{ data.subject_name }}</h4> </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Faculty</h4>  </div>
+                    <div class="col-md-6 text-muted "><h4>{{ data.faculty_name }}</h4> </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Notes</h4>  </div>
+                        <div class="col-md-6 text-muted "><h4><a target="_blank" href="{{ data.notes.url }}" style="color:blue">Click Here<i class="fa fa-open" style="margin-left: 5px;"></i></a></h4> </div>
+                    </div>
+
+                    <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Upload Date Upload Time</h4>  </div>
+                    <div class="col-md-6 text-muted "><h4>{{ data.date}}</h4> </div>
+                    </div>
+                    <hr>
+
+
+                </div>
+
+            </div>
+
+        </div>
+{% endfor %}
+
+	</div>
+
+</div>
+
+        {% endif %}
+
+{% if msg is not None %}
+    <h2>{{ msg }}</h2>
+    {% endif %}
+    <!--end search-->
+    <!--videos-->
+<center>
+<h2>Latest Videos</h2>
+    </center>
+        <div class="container">
+    <div class="row">
+<br>
+{% for data in datas %}
+
+        <div class="col-lg-4 container" style="border-style:ridge;padding-top: 4%;">
+ <div class="card-header" style="margin-top:-10px ">
+
+                </div>
+            <div class="card user-card" >
+               <br><br><br>
+                <div class="card-block" style="padding-right: 2%">
+                    <div class="user-image">
+<video  controls  style="width:220px;height: 200px;border-radius: 20px;margin-left:8%">
+  <source src="{{ data.video.url }}" >
+
+</video>
+
+
+                    </div>
+<hr>                <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Topic </h4> </div>
+                    <div class="col-md-6 text-muted " ><h4>{{ data.topic_name }}</h4> </div>
+                    </div>
+
+                    <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Subject</h4>  </div>
+                    <div class="col-md-6 text-muted "><h4>{{ data.subject_name }}</h4> </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Faculty</h4>  </div>
+                    <div class="col-md-6 text-muted "><h4>{{ data.faculty_name }}</h4> </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Notes</h4>  </div>
+                        <div class="col-md-6 text-muted "><h4><a target="_blank" href="{{ data.notes.url }}" style="color:blue">Click Here<i class="fa fa-open" style="margin-left: 5px;"></i></a></h4> </div>
+                    </div>
+
+                    <div class="row">
+                    <div class="col-md-6 text-muted "><h4>Upload Date Upload Time</h4>  </div>
+                    <div class="col-md-6 text-muted "><h4>{{ data.date}}</h4> </div>
+                    </div>
+                    <hr>
+
+
+                </div>
+
+            </div>
+
+        </div>
+{% endfor %}
+
+	</div>
+
+</div>
+    <center>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+   {% if datas.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page={{ datas.previous_page_number }}">Previous</a></li>
+   {% endif %}
+    <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+    <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+    <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+
+  {% if datas.number > 3 %}
+        <li class="page-item"><a class="page-link" href="?page=3">{{ datas.number }}</a></li>
+    {% endif %}
+   {% if datas.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ datas.next_page_number }}">Next</a></li>
+  {% endif %}
+
+  </ul>
+</nav>
+    </center>
+    <!--end videos-->
+
+
+
+    <!-- / SERVICES -->
+    <section id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="title text-center">Best Courses</h3>
+            <div class="titleHR"><span></span></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4"> <!-- Service-item -->
+            <div class="text-center services-item">
+              <div class="col-wrapper">
+                <div class="icon-border">
+                  <i class="icon-design-graphic-tablet-streamline-tablet color-l-orange"></i>
+                </div>
+                <h5>Engineering</h5>
+                <p>Engineering is the use of scientific principles to design and build machines, structures, and other items, including bridges, tunnels, roads, vehicles, and buildings .</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4"> <!-- Service-item -->
+            <div class="text-center services-item">
+              <div class="col-wrapper">
+                <div class="icon-border">
+                  <i class="icon-design-pencil-rule-streamline color-l-blue"></i>
+                </div>
+                <h5>Pharmacy</h5>
+                <p>Pharmacists are healthcare professionals with specialized education and training who perform various roles to ensure optimal health outcomes for their patients through the quality use of medicines. </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4"> <!-- Service-item -->
+            <div class="text-center services-item">
+              <div class="col-wrapper">
+                <div class="icon-border">
+                  <i class="icon-settings-streamline-2 color-l-purple"></i>
+                </div>
+                <h5>ITI</h5>
+                <p>Industrial Training Institutes (ITI) and Industrial Training Centers (ITC) are post-secondary schools in India constituted under Directorate General of Training.</p>
+              </div>
+            </div>
+          </div>
+        </div> <!--/.row -->
+
+        <div class="row">
+          <div class="col-sm-4"> <!-- Service-item -->
+            <div class="text-center services-item">
+              <div class="col-wrapper">
+                <div class="icon-border">
+
+                  <i class="icon-speech-streamline-talk-user color-l-yellow"></i>
+
+                </div>
+                <h5>Diploma</h5>
+                <p>a certificate awarded by an educational establishment to show that someone has successfully completed a course of study.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4"> <!-- Service-item -->
+            <div class="text-center services-item">
+              <div class="col-wrapper">
+                <div class="icon-border">
+                  <i class="icon-design-graphic-tablet-streamline-tablet color-l-orange"></i>
+                </div>
+                <h5>Master In Engineering</h5>
+                <p>Engineering is the use of scientific principles to design and build machines, structures, and other items, including bridges, tunnels, roads, vehicles, and buildings .</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4"> <!-- Service-item -->
+            <div class="text-center services-item">
+              <div class="col-wrapper">
+                <div class="icon-border">
+<img src="https://cdn.icon-icons.com/icons2/20/PNG/256/businessapplication_edit_male_user_thepencil_theclient_negocio_2321.png" width="60" height="65">
+                </div>
+                <h5>Master in Business Administration </h5>
+                <p>A Master of Business Administration (MBA; also Master's in Business Administration) is a graduate degree focusing on business administration and investment .</p>
+              </div>
+            </div>
+          </div>
+        </div> <!--/.row -->
+      </div> <!--/.container -->
+    </section>
+    <!-- / End services-->
+
+
+    <!-- TWITTER TWEET -->
+    <section class="twitter_tweet parallax" id="twitter_tweet" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <div id="testi-carousel" class="owl-carousel owl-spaced">
+              <div>
+                <i class="fa fa-twitter"></i>
+                <h5>
+“Our core goal is to make people smile, happy, less stressed, and make the campus a little better of a place,” said Anivesh Nishad, Student of the Collage.”                </h5>
+                <p>- Parag Modi</p>
+              </div><!--testimonials item like paragraph-->
+              <div>
+                <i class="fa fa-twitter"></i>
+                <h5>
+“It’s fun to see people’s reactions,” I said. “You might think it wouldn’t be that special, but people feel so genuinely excited and really thankful.”                </h5>
+                <p>- Anivesh Nishad </p>
+              </div><!--testimonials item like paragraph-->
+              <div>
+                <i class="fa fa-twitter"></i>
+                <h5>
+ “We are doing something that should be second nature.”               </h5>
+                <p>- Saharsh Solanki</p>
+              </div><!--testimonials item like paragraph-->
+            </div>
+          </div> <!-- end col-md-8 -->
+        </div> <!-- end row -->
+      </div> <!-- container -->
+    </section>
+    <!-- End TWITTER TWEET -->
+
+
+
+
+    <!-- Scroll top -->
+    <a href="#" class="back-to-top"> <i class="fa fa-chevron-up"> </i> </a>
+
+
+    <!-- Style switcher -->
+    <div id="style-switcher" style="left: 0px;">
+        <div>
+            <h3>Select your color</h3>
+            <ul class="pattern">
+                <li><a class="color1" href="#"></a></li>
+                <li><a class="color2" href="#"></a></li>
+                <li><a class="color3" href="#"></a></li>
+                <li><a class="color4" href="#"></a></li>
+                <li><a class="color5" href="#"></a></li>
+                <li><a class="color6" href="#"></a></li>
+                <li><a class="color7" href="#"></a></li>
+                <li><a class="color8" href="#"></a></li>
+                <li><a class="color9" href="#"></a></li>
+                <li><a class="color10" href="#"></a></li>
+                <li><a class="color11" href="#"></a></li>
+                <li><a class="color12" href="#"></a></li>
+            </ul>
+        </div>
+        <div class="bottom">
+        </div>
+    </div>
+    <!-- end Style switcher -->
+
+{% endblock %}

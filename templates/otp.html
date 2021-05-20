@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+    AIT Learning | Enter OTP
+{% endblock %}
+{% block content %}
+         <!-- /HOME -->
+    <section class="main-home" id="home">
+<div class="home-page-photo"></div>
+      <div class="home__header-content">
+{% include 'messages.html' %}
+        <div id="main-home-carousel" class="owl-carousel">
+<div class="container-fluid ">
+           <center>
+            <form style="text-align:left;width:60%; " class="shadow-box" method="post" action="{% url 'verify_otp' %}">
+{% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" value="{{ data.email }}" name="email" placeholder="Enter Registered Email ID" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readonly>
+   </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">OTP {{ data.otp }}</label>
+    <input type="text" name="otp" class="form-control" placeholder="Enter OTP" id="exampleInputPassword1" REQUIRED>
+  </div>
+<br>
+  <button type="submit" class="btn btn-primary">Submit</button><br>
+             <p style="color:white;font-family:bold;float:left"> Resend Otp <a style="color:blue"  href="#">Click Here</a>
+              </p>
+
+            </form></center>
+    </div>
+        </div>
+      </div>
+    </section>
+    <!-- /End HOME -->
+
+{% endblock %}
